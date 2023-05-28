@@ -16,12 +16,12 @@ Features
 Getting Started
 ---------------
 Prerequisites:
-- Ruby (version X.X.X)
-- Ruby on Rails (version X.X.X)
+- Ruby (version 3.0.2)
+- Ruby on Rails (version 7.0.5)
 - SQLite or other supported database
 
 Installation:
-1. Clone the repository: `git clone <repository-url>`
+1. Clone the repository: `git clone https://github.com/MegsKunneke/ecrm
 2. Install the dependencies: `bundle install`
 3. Set up the database: `rails db:setup`
 4. Start the server: `rails server`
