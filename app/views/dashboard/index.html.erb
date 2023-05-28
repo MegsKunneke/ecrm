@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Page</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-6 mt-5">
+      <div class="card bg-dark text-light">
+        <div class="card-body">
+          <h2 class="card-title">Dashboard</h2>
+          <% if user_signed_in? %>
+            <p class="card-text">You are signed in as <%= current_user.name %>.</p>
+          <% else %>
+            <p class="card-text">You are not signed in.</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
