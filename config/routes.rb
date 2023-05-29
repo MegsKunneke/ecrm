@@ -7,12 +7,19 @@ Rails.application.routes.draw do
   # Custom routes
   get '/dashboard', to: 'dashboard#index'
   get '/admin/users', to: 'admin_users#index'
+  get '/customers', to: 'customers#index'
+
 
   # Additional routes for users
   resources :users, only: [:show, :edit, :update]
+  
 
   # Admin Users route
   resources :admin, only: [:index]
+  resources :customers, only: [:index, :new, :create, :edit, :update, :destroy]
+
+
+
 
 
   # Devise sign out route

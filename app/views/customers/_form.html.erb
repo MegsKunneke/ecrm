@@ -1,0 +1,93 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-6 mt-5">
+      <div class="card bg-dark text-light">
+        <div class="card-body">
+          <h2 class="card-title"><%= @customer.new_record? ? "Create Customer" : "Edit Customer" %></h2>
+
+          <%= form_with(model: customer, url: customer.new_record? ? customers_path : customer_path(customer), method: customer.new_record? ? :post : :patch, html: { class: "form" }) do |form| %>
+            <% if customer.errors.any? %>
+              <div id="error_explanation" class="alert alert-danger">
+                <h2><%= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
+                <ul>
+                  <% customer.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+            <div class="field form-group">
+              <%= form.label :name, class: "form-label" %>
+              <%= form.text_field :name, class: "form-control" %>
+            </div>
+
+            <div class="field form-group">
+              <%= form.label :email, class: "form-label" %>
+              <%= form.email_field :email, class: "form-control" %>
+            </div>
+
+            <div class="field form-group">
+              <%= form.label :phone, class: "form-label" %>
+              <%= form.text_field :phone, class: "form-control" %>
+            </div>
+
+            <div class="field form-group">
+              <%= form.label :address, class: "form-label" %>
+              <%= form.text_field :address, class: "form-control" %>
+            </div>
+
+            <div class="field form-group">
+              <%= form.label :secondary_phone, class: "form-label" %>
+              <%= form.text_field :secondary_phone, class: "form-control" %>
+            </div>
+
+            <div class="field form-group">
+              <%= form.label :fax, class: "form-label" %>
+              <%= form.text_field :fax, class: "form-control" %>
+            </div>
+
+            <div class="field form-group">
+              <%= form.label :social_media_profiles, class: "form-label" %>
+              <%= form.text_field :social_media_profiles, class: "form-control" %>
+            </div>
+
+            <div class="field form-group">
+              <%= form.label :company_name, class: "form-label" %>
+              <%= form.text_field :company_name, class: "form-control" %>
+            </div>
+
+            <div class="field form-group">
+              <%= form.label :position, class: "form-label" %>
+              <%= form.text_field :position, class: "form-control" %>
+            </div>
+
+            <div class="field form-group">
+              <%= form.label :department, class: "form-label" %>
+              <%= form.text_field :department, class: "form-control" %>
+            </div>
+
+<div class="field form-group">
+  <%= form.label :gender, class: "form-label" %>
+  <%= form.select :gender, options_for_select(["Male", "Female", "Other"]), class: "form-control" %>
+</div>
+
+<div class="field form-group">
+  <%= form.label :nationality, class: "form-label" %>
+  <%= form.text_field :nationality, class: "form-control" %>
+</div>
+
+<div class="field form-group">
+  <%= form.label :notes, class: "form-label" %>
+  <%= form.text_area :notes, class: "form-control", rows: 4 %>
+</div>
+
+<div class="actions">
+  <% if @customer.new_record? %>
+    <%= form.submit "Create Customer", class: "btn btn-primary" %>
+  <% else %>
+    <%= form.submit "Update Customer", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+<% end %>

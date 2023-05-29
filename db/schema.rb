@@ -10,7 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_27_213755) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_28_094846) do
+  create_table "customers", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "phone"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "secondary_phone"
+    t.string "fax"
+    t.string "social_media_profiles"
+    t.string "position"
+    t.string "gender"
+    t.string "nationality"
+    t.text "notes"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -20,8 +44,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_27_213755) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_users_on_username"
   end
 
+  add_foreign_key "profiles", "users"
 end
