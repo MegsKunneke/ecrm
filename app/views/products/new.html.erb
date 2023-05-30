@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 mt-5">
+      <h2>New Product</h2>
+
+      <%= form_with(model: @product, url: products_path, class: 'form') do |form| %>
+        <div class="mb-3">
+          <%= form.label :name, class: "form-label" %>
+          <%= form.text_field :name, class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :sku, class: "form-label" %>
+          <%= form.text_field :sku, class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :cost_price, class: "form-label" %>
+          <%= form.text_field :cost_price, class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :retail_price, class: "form-label" %>
+          <%= form.text_field :retail_price, class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :supplier, class: "form-label" %>
+          <%= form.text_field :supplier, class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :inventory, class: "form-label" %>
+          <%= form.number_field :inventory, class: "form-control" %>
+        </div>
+
+        <div class="d-grid">
+          <%= form.submit "Create Product", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

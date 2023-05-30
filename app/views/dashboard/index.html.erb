@@ -16,7 +16,7 @@
         <div class="card-body">
           <h2 class="card-title">Dashboard</h2>
           <% if user_signed_in? %>
-            <p class="card-text">You are signed in as <%= current_user.name %>.</p>
+            <p class="card-text">You are signed in as <%= current_user.name %> <% if current_user.role.present? %> (Role: <%= current_user.role.humanize %>)<% end %> .</p>
           <% else %>
             <p class="card-text">You are not signed in.</p>
           <% end %>
@@ -25,3 +25,6 @@
     </div>
   </div>
 </div>
+
+
+

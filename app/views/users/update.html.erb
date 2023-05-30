@@ -1,2 +1,29 @@
-<h1>Users#update</h1>
-<p>Find me in app/views/users/update.html.erb</p>
+          <h2 class="card-title">All Users</h2>
+<table class="table table-dark table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Role</th>
+      <% if user_signed_in? %> <!-- Check if user is signed in -->
+        <th>Actions</th> <!-- New column for actions -->
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.role %></td>
+        <% if user_signed_in? %> <!-- Check if user is signed in -->
+          <td>
+            <%= link_to "Edit", edit_user_path(user), class: "btn btn-primary" %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

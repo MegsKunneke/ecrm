@@ -1,16 +1,25 @@
-# app/controllers/registrations_controller.rb
 class RegistrationsController < Devise::RegistrationsController
+  def create
+    super do |resource|
+      if resource.persisted?
+        # Handle successful user creation
+        redirect_to root_path, notice: "Account created successfully!"
+        return
+      else
+        # Handle errors
+        render :new
+        return
+      end
+    end
+  end
 
-      private
+  private
 
   def sign_up_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :role)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
-  
-  def create
-    super do |user|
-      user.role = :sales # Set the default role for new users
-      user.save
-    end
+
+  def account_update_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :current_password)
   end
 end

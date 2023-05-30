@@ -2,24 +2,26 @@ Rails.application.routes.draw do
   root 'home#index'
 
   # Devise routes
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'registrations' }
+  
+
 
   # Custom routes
-  get '/dashboard', to: 'dashboard#index'
-  get '/admin/users', to: 'admin_users#index'
-  get '/customers', to: 'customers#index'
+  get '/dashboard', to: 'dashboard#index', as: 'dashboard'
+  get '/profile', to: 'users#profile', as: 'user_profile'
+  get '/users', to: 'users#index', as: 'users'
+
+  resources :products
 
 
   # Additional routes for users
-  resources :users, only: [:show, :edit, :update]
-  
+  resources :users
+
 
   # Admin Users route
-  resources :admin, only: [:index]
-  resources :customers, only: [:index, :new, :create, :edit, :update, :destroy]
-
-
-
+  namespace :admin do
+  resources :users, only: [:index]
+  end
 
 
   # Devise sign out route
